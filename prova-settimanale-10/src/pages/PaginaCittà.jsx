@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import axios from 'axios';
+import MettiCittà from '../components/MettiCittà';
+
 
 
 export default function PaginaCittà() {
@@ -39,6 +41,8 @@ export default function PaginaCittà() {
   return (
     <Container>
       <h1>Pagina Città</h1>
+      <MettiCittà/>
+
 
 
 
