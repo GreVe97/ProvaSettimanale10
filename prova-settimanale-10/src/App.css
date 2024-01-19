@@ -5,6 +5,10 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+.condizioniMeteo{
+  width: 5rem;
+}
+
 
 .carta:hover{
   cursor: pointer;
