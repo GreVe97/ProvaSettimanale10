@@ -9,26 +9,22 @@ import Card from 'react-bootstrap/Card';
 
 export default function RisultatoRicerca({ city }) {
   const navigate = useNavigate()
-  let mapkey ="0723bd65fa37455b9769a930eccac2d6"
+  let mapkey = "0723bd65fa37455b9769a930eccac2d6";
+  let altezza = 160;
+  let larghezza = 285;
+
 
   return (
-    <Row
-      className="mx-0 mt-3 p-1"
-      style={{ border: '1px solid #00000033', borderRadius: 4 }}>
-      <Col xs={3}>
-        <Link to={`/città/${city.lat}/${city.lon}`} className='text-decoration-none'>
-          {city.name} - {city.country} {city.state && <span className="">- {city.state}</span>}
-
-        </Link>
-      </Col>
-      <Col xs={3}>
-         <p  onClick={() => navigate(`/città/${city.lat}/${city.lon}`)}> {city.name} - {city.country} {city.state && <span className="">- {city.state}</span>}</p>
-        
-     
-      </Col>
-      <Col xs={6}>
-        <img  width="300" height="300" src={"https://maps.geoapify.com/v1/staticmap?style=osm-bright&center=lonlat:"+city.lon+","+city.lat+"&zoom=6&marker=lonlat:"+city.lon+","+city.lat+";color:%23ff0000;size:small&scaleFactor=1&apiKey=0723bd65fa37455b9769a930eccac2d6"} alt="" />
-      </Col>
-    </Row>
+    <>
+      <div onClick={() => navigate(`/città/${city.lat}/${city.lon}`)} className='carta mt-5 me-4 justify-content-center rounded overflow-hidden'>
+        <img width={larghezza + "px"} height={altezza + "px"} src={"https://maps.geoapify.com/v1/staticmap?style=osm-bright&width=" + larghezza + "&height=" + altezza + "&center=lonlat:" + city.lon + "," + city.lat + "&zoom=5&marker=lonlat:" + city.lon + "," + city.lat + ";color:%23ff0000;size:small&apiKey=" + mapkey} className='rounded border border-bottom-0 img-fluid' />
+        <div className='pt-2 ps-2 border '>
+          <h5>{city.name}</h5>
+          <h6>
+            {city.country} {city.state && <span className="">- {city.state}</span>}
+          </h6>
+        </div>
+      </div>
+    </>
   )
 }

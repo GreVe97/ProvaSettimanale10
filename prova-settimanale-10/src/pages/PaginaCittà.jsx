@@ -9,10 +9,11 @@ import MettiCittà from '../components/MettiCittà';
 
 export default function PaginaCittà() {
 
-  let chiave = "&appid=ffb99f146969547191dab81df6c39e4b"
-  const { lat, lon } = useParams();
+  let chiave = "&appid=ffb99f146969547191dab81df6c39e4b"  
   const [città, setCittà] = useState()
   const [previsioni, setPrevisioni] = useState();
+  const [loading, setLoading] =useState();
+  const[{ lat, lon },{setLat, setLon}]=useState(useParams())
 
   useEffect(() => {
     axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=it&units=metric`+ chiave)
@@ -34,14 +35,24 @@ export default function PaginaCittà() {
           console.log("Errore Server!!!")
         }
       }).catch(error => console.error(error))
-  }, []);
+      
+  }, [lat, lon]);
+
+  useEffect(()=>{
+    console.log(città);
+  },[città])
 
 
 
   return (
     <Container>
       <h1>Pagina Città</h1>
-      <MettiCittà/>
+      {città && <><p>{città.weather[0].description}</p>
+      
+      
+      <MettiCittà città={città}/></>}
+      
+     
 
 
 
