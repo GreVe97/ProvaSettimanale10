@@ -17,7 +17,7 @@ export default function MettiCittà({ città }) {
 
     <>
 
-      <MDBContainer className="condizioniMeteo">
+      <MDBContainer className="">
         <MDBRow className="justify-content-center align-items-center ">
           <MDBCol md="9" lg="7" xl="5">
             <MDBCard
@@ -85,7 +85,7 @@ export default function MettiCittà({ città }) {
                         <strong>Dir vento</strong>
                       </MDBCol>
                       <MDBCol className="text-end">
-                        {città.wind.speed}°
+                        {città.wind.deg}°
                       </MDBCol>
                     </MDBRow>
                   </MDBCol>
@@ -129,6 +129,8 @@ export default function MettiCittà({ città }) {
           </MDBCol>
         </MDBRow>
       </MDBContainer>
+
+  
 
     </>
 

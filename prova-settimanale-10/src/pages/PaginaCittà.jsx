@@ -56,7 +56,7 @@ export default function PaginaCittà() {
         </Spinner>}
 
       {previsioni ?
-        <Previsioni previsioni={previsioni.list} />
+        <Previsioni previsioni={previsioni.list} città={previsioni.city} />
         :
         <Spinner animation="border" role="status">
           <span className="visually-hidden">Loading...</span>

@@ -5,12 +5,28 @@ body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
-.condizioniMeteo{
-  width: 5rem;
+
+
+.carousel-inner {
+  scroll-behavior: smooth;
+
+}
+
+.griglia button{
+  color: black !important;
+  width: 5rem;   
+  margin-top: auto;
+  margin-bottom: auto;
+ 
+}
+
+.griglia button:hover{
+  background-color: rgba(0, 0, 0, 0.051); 
 }
 
 
-.carta:hover{
+
+.carta:hover, .card:hover{
   cursor: pointer;
   z-index: 1;
   transform: scale(1.01);

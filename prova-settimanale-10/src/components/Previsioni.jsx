@@ -1,7 +1,7 @@
 import React from 'react'
 import { Container, Spinner, Alert, } from 'react-bootstrap';
+import MettiPrevisione from './MettiPrevisione';
 
-import MettiCittà from './MettiCittà';
 
 
 
@@ -19,31 +19,36 @@ function scrolla(verso) {
     }
 }
 
-export default function Previsioni({previsioni}) {
+export default function Previsioni({previsioni,città}) {
     console.log(previsioni);
+    console.log(città);
+    console.log({...previsioni,...città});
 
 
   return (<>
     <div>Previsioni</div>
     <Container className='mt-5'>
-                <div className="grigliaFilm my-4">
+                <div className="griglia my-4 py-1">
                     <div id="previsioni" className="carousel slide" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active d-flex">
                                 {previsioni.map((ele,index) =>
-                                    <MettiCittà città = {ele} key={index}/>
+                                <MettiPrevisione città={{...ele,...città}} key={index}/>                    
+                               
+                                    
+                                    
                                 )} 
                             </div>
                         </div>
-                        <button className="carousel-control-prev" type="button" data-bs-target="#previsioni"
+                        <button className="carousel-control-prev rounded-5" type="button" data-bs-target="#previsioni"
                             data-bs-slide="prev" onClick={() => scrolla(-1)}>
-                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Previous</span>
+                            <span className="carousel-control-prev-icon" aria-hidden="false"></span>
+                            
                         </button>
-                        <button className="carousel-control-next" type="button" data-bs-target="#previsioni"
+                        <button className="carousel-control-next rounded-5" type="button" data-bs-target="#previsioni"
                             data-bs-slide="next" onClick={() => scrolla(1)}>
-                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span className="visually-hidden">Next</span>
+                            <span className="carousel-control-next-icon" aria-hidden="false"></span>
+                           
                         </button>
                     </div>
                 </div>
