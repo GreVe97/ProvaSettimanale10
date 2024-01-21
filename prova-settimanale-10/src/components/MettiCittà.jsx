@@ -13,124 +13,127 @@ let iconFormat = ".png";
 export default function MettiCittà({ città }) {
   let urlGif = "https://mdbgo.io/ascensus/mdb-advanced/img/" + città.weather[0].main.toLowerCase() + ".gif";
   console.log(città);
+  
   return (
 
     <>
 
-      <MDBContainer className="">
-        <MDBRow className="justify-content-center align-items-center ">
-          <MDBCol md="9" lg="7" xl="5">
-            <MDBCard
-              className="text-white bg-image shadow-4-strong"
-              style={{
-                backgroundImage: "url(" + urlGif + ")"
-              }}>
-              <MDBCardHeader className="p-4 border-0">
-                <div className="text-center mb-2">
-                  <p className="h2 mb-1"> <strong>{città.name}</strong>, {città.sys.country}</p>
-                  <img src={iconBaseUrl + città.weather[0].icon + iconFormat} className="d-inline-block" alt="" /><p className="mb-1 d-inline-block">{città.weather[0].description.toUpperCase()}</p>
-                  <p className="display-1 mb-1">{città.main.temp}°C</p>
+     
+
+
+
+
+
+
+<div className="container" style={{maxWidth:"35rem"}}>
+      <div className="row justify-content-center align-items-center">
+        <div className="col">
+          <div
+            className="card text-white bg-image shadow-4-strong"
+            style={{
+              backgroundImage: `url(${urlGif})`
+            }}
+          >
+            <div className="card-header p-4 border-0 text-center mb-2">
+              <p className="h2 mb-1">
+                <strong>{città.name}</strong>, {città.sys.country}
+              </p>
+              <img
+                src={`${iconBaseUrl}${città.weather[0].icon}${iconFormat}`}
+                className="d-inline-block mb-2"
+                alt=""
+              />
+              <p className="pb-0 d-inline-block fs-4 text">
+                {città.weather[0].description}
+              </p>
+              <p className="display-1 mb-1">{Math.round(città.main.temp)}°C</p>
+            </div>
+            <div className="card-body p-2 border-top border-bottom mb-1">
+              <div className="row text-center">
+                <div className="col">
+                  <strong className="d-block mb-2">"Feels like"</strong>
+                  <strong className="d-block">{città.main.feels_like}°C</strong>
                 </div>
-              </MDBCardHeader>
-              <MDBCardBody className="p-2 border-top border-bottom mb-1">
-                <MDBRow className="text-center">
-                  <MDBCol size="4">
-                    <strong className="d-block mb-2">"Feels like"</strong>
-                    {/* <img src={iconsFullyUrl.now} className="" alt="" /> */}
-                    <strong className="d-block">{città.main.feels_like}°C</strong>
-                  </MDBCol>
+                <div className="col">
+                  <strong className="d-block mb-2">T Min <i className="fa-solid fa-temperature-arrow-down"></i></strong>
+                  <strong className="d-block">{città.main.temp_min}°C</strong>
+                </div>
+                <div className="col">
+                  <strong className="d-block mb-2">T Max <i className="fa-solid fa-temperature-arrow-up"></i></strong>
+                  <strong className="d-block">{città.main.temp_max}°C</strong>
+                </div>
+              </div>
+            </div>
+            <div className="card-body px-3">
+              <div className="row">
+                <div className="col-lg-6">
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>Visibilità</strong>
+                    </div>
+                    <div className="col text-end">
+                      {città.visibility / 1000} km
+                    </div>
+                  </div>
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>Nuvolosità</strong>
+                    </div>
+                    <div className="col text-end">{città.clouds.all}%</div>
+                  </div>
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>Vel vento</strong>
+                    </div>
+                    <div className="col text-end">{città.wind.speed}m/s</div>
+                  </div>
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>Dir vento</strong>
+                    </div>
+                    <div className="col text-end">{città.wind.deg}°</div>
+                  </div>
+                </div>
+                <div className="col-lg-6">
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>Pressione:</strong>
+                    </div>
+                    <div className="col text-end">
+                      {città.main.pressure} hPa
+                    </div>
+                  </div>
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>Umidità:</strong>
+                    </div>
+                    <div className="col text-end">{città.main.humidity}%</div>
+                  </div>
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>P sea-lvl:</strong>
+                    </div>
+                    <div className="col text-end">
+                      {città.main.sea_level} hPa
+                    </div>
+                  </div>
+                  <div className="row align-items-center">
+                    <div className="col">
+                      <strong>P grnd-lvl:</strong>
+                    </div>
+                    <div className="col text-end">
+                      {città.main.grnd_level} hPa
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-                  <MDBCol size="4">
-                    <strong className="d-block mb-2">T Min</strong>
 
-                    <strong className="d-block">{città.main.temp_min}°C</strong>
-                  </MDBCol>
-
-                  <MDBCol size="4">
-                    <strong className="d-block mb-2">T Max</strong>
-
-                    <strong className="d-block">{città.main.temp_max}°C</strong>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCardBody>
-              <MDBCardBody className="px-3">
-                <MDBRow className="">
-                  <MDBCol lg={6} md={12} >
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>Visibilità</strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.visibility} m
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>Nuvolosità</strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.clouds.all}%
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>Vel vento</strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.wind.speed}m/s
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>Dir vento</strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.wind.deg}°
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCol>
-                  <MDBCol lg={6} md={12} className="">
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>Pressione:</strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.main.pressure} hPa
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>Umidità: </strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.main.humidity}%
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>P sea-lvl:</strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.main.sea_level} hPa
-                      </MDBCol>
-                    </MDBRow>
-                    <MDBRow className="align-items-center">
-                      <MDBCol >
-                        <strong>P grnd-lvl: </strong>
-                      </MDBCol>
-                      <MDBCol className="text-end">
-                        {città.main.grnd_level} hPa
-                      </MDBCol>
-                    </MDBRow>
-                  </MDBCol>
-                </MDBRow>
-              </MDBCardBody>
-            </MDBCard>
-          </MDBCol>
-        </MDBRow>
-      </MDBContainer>
-
-  
 
     </>
 

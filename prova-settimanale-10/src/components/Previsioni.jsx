@@ -28,8 +28,8 @@ export default function Previsioni({previsioni,città}) {
   return (<>
     <div>Previsioni</div>
     <Container className='mt-5'>
-                <div className="griglia my-4 py-1">
-                    <div id="previsioni" className="carousel slide" data-bs-ride="carousel">
+                <div className="griglia my-4">
+                    <div id="previsioni" className="carousel slide py-1" data-bs-ride="carousel">
                         <div className="carousel-inner">
                             <div className="carousel-item active d-flex">
                                 {previsioni.map((ele,index) =>
