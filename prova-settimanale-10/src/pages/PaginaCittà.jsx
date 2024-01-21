@@ -51,14 +51,14 @@ export default function PaginaCittà() {
       <h1>Pagina Città</h1>
       {città ?
         <MettiCittà città={città} />
-        : <Spinner animation="border" role="status">
+        : <Spinner animation="border" role="status" className='mx-auto'>
           <span className="visually-hidden">Loading...</span>
         </Spinner>}
 
       {previsioni ?
         <Previsioni previsioni={previsioni.list} città={previsioni.city} />
         :
-        <Spinner animation="border" role="status">
+        <Spinner animation="border" role="status" className='mx-auto'>
           <span className="visually-hidden">Loading...</span>
         </Spinner>}
 

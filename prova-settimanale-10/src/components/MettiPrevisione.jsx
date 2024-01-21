@@ -44,7 +44,7 @@ export default function MettiPrevisione({ città }) {
           <Card style={{}}>
             <ListGroup variant="flush">
               <ListGroup.Item>
-                <strong className="me-auto">Velocità vento:</strong>
+                <strong className="me-auto">Velocità vento:{ parseInt(ora)}</strong>
                   <span className="ms-auto"> {città.wind.speed}m/s</span></ListGroup.Item>
               <ListGroup.Item>
                 <strong className="me-auto">Direzione vento:</strong>
@@ -71,7 +71,7 @@ export default function MettiPrevisione({ città }) {
                 <h6 className="">{giorno}</h6>
                 <div className="d-flex">
                   <h5 className="me-2">ore: {ora}</h5>
-                {parseInt(ora)<18 ? <i className="fa-solid fa-moon"></i> : <i className="fa-solid fa-sun"></i>}
+                {(parseInt(ora)<18 && parseInt(ora)>=6 ) ? <i className="fa-solid fa-sun p-0 my-0"></i> : <i className="fa-solid fa-moon p-0 my-0"></i> }
                 </div>
                 
               </div>
@@ -82,7 +82,6 @@ export default function MettiPrevisione({ città }) {
                 <img src={"http://openweathermap.org/img/wn/" + città.weather[0].icon + ".png"} className="d-inline-block" alt="" /><span className="small" style={{}}>{città.weather[0].description}</span>
               </div>
             </div>
-
             <div className="d-flex justify-content-between">
               <div className="d-flex align-items-center">
                 <div className="flex-grow-1" style={{ fontSize: '1rem' }}>
